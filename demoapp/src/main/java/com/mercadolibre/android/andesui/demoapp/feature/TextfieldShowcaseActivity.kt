@@ -12,19 +12,24 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ScrollView
 import android.widget.Spinner
+import android.widget.Switch
 import android.widget.Toast
 import com.mercadolibre.android.andesui.button.AndesButton
-import com.mercadolibre.android.andesui.demoapp.feature.utils.PageIndicator
 import com.mercadolibre.android.andesui.demoapp.R
+import com.mercadolibre.android.andesui.demoapp.feature.utils.PageIndicator
 import com.mercadolibre.android.andesui.textfield.AndesTextarea
 import com.mercadolibre.android.andesui.textfield.AndesTextfield
+import com.mercadolibre.android.andesui.textfield.configurator.configureAsNumericField
 import com.mercadolibre.android.andesui.textfield.content.AndesTextfieldLeftContent
 import com.mercadolibre.android.andesui.textfield.content.AndesTextfieldRightContent
 import com.mercadolibre.android.andesui.textfield.state.AndesTextfieldState
+import java.text.DecimalFormatSymbols
+import java.util.Locale
 
 class TextfieldShowcaseActivity : AppCompatActivity() {
 
@@ -68,11 +73,12 @@ class TextfieldShowcaseActivity : AppCompatActivity() {
         private fun initViews(): List<View> {
             val inflater = LayoutInflater.from(context)
 
-            val dynamicTextfieldLayout = addDynamicTextfieldLayout(inflater)
-            val dynamicTextareaLayout = addDynamicTextareaLayout(inflater)
-            val staticTextfieldLayout = addStaticTextfieldLayout(inflater)
-
-            return listOf(dynamicTextfieldLayout, dynamicTextareaLayout, staticTextfieldLayout)
+            return listOf(
+                addDynamicTextfieldLayout(inflater),
+                addNumericTest(inflater),
+                addDynamicTextareaLayout(inflater),
+                addStaticTextfieldLayout(inflater)
+            )
         }
 
         @Suppress("LongMethod")
@@ -192,6 +198,59 @@ class TextfieldShowcaseActivity : AppCompatActivity() {
                 textfield.leftContent = null
                 textfield.rightContent = null
                 textfield.clearMask()
+            }
+
+            return layoutTextfield
+        }
+
+        private fun addNumericTest(inflater: LayoutInflater): View {
+            val layoutTextfield = inflater.inflate(R.layout.andesui_textfield_showcase_amount, null, false)
+            val textfield = layoutTextfield.findViewById<AndesTextfield>(R.id.andesui_textfield_number)
+
+            var showDecimals = true
+            var locale = Locale("es", "AR")
+
+            val initializeField: () -> Unit = {
+                textfield.text = ""
+                textfield.configureAsNumericField(
+                    showDecimals = showDecimals,
+                    symbols = DecimalFormatSymbols(locale)
+                )
+            }
+            initializeField()
+
+            // Spinner to configure locale
+            layoutTextfield.findViewById<Spinner>(R.id.symbols)?.let {
+                it.adapter = ArrayAdapter(
+                    context,
+                    android.R.layout.simple_spinner_item,
+                    listOf("es_AR", "es_MX", "es_BR")
+                ).apply {
+                    setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                }
+                it.setSelection(0)
+                it.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        (it.selectedItem as? String)?.let { selected ->
+                            val idiom = selected.split("_")
+                            locale = Locale(idiom[0], idiom[1])
+                            initializeField()
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        TODO("Not yet implemented")
+                    }
+                }
+            }
+
+            // Check to show decimals
+            layoutTextfield.findViewById<Switch>(R.id.show_decimals)?.let {
+                it.isChecked = true
+                it.setOnCheckedChangeListener { buttonView, isChecked ->
+                    showDecimals = isChecked
+                    initializeField()
+                }
             }
 
             return layoutTextfield

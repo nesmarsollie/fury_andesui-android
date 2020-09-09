@@ -64,6 +64,7 @@
     <string name="radiobutton_description">They allow you to make a selection from a list of options. Unlike checkboxes, radio buttons only allow you to choose an option.</string>
     <string name="thumbnail_description">They are containers that specify images, logos and icons for complementary content and modified meaning. When grouped together, they improve the scannability of the information.</string>
     <string name="textfield_description">Allows the user to enter and edit text values.</string>
+    <string name="textfield_numeric_description">configureAsNumericField extension configures the AndesTextfiel to allow monetary amount values.</string>
     <string name="badge_description">Badges are small units of information that allow you to indicate the state of an element or differentiate several similar elements from each other.</string>
     <string name="tag_description">Tags are compact components that represent complex information in a summarized way. Allowing users to make selections, enter information, or filter content.</string>
     <string name="snackbar_description">They communicate quickly and concisely the status of an event. For more complex or extensive communications, consider the use of tooltip or message.</string>
@@ -106,6 +107,9 @@
     <string name="andesui_demoapp_mask_hint">ejemplo: ##-###-######-#</string>
     <string name="andesui_demoapp_counter_separator">/</string>
     <string name="andesui_demoapp_textfield_input_type">Input Type:</string>
+    <string name="andesui_demoapp_textfield_input_amount_title">Money Value</string>
+    <string name="andesui_demoapp_textfield_input_decimals">Decimales</string>
+    <string name="andesui_demoapp_textfield_input_zone">CurrencySymbols:</string>
     <string name="andes_checkbox_showcase">Andes Checkbox</string>
     <string name="andes_card_showcase">Andes Card</string>
     <string name="andes_radiobutton_showcase">Andes RadioButton</string>
