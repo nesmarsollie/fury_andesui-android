@@ -1,4 +1,4 @@
-package com.mercadolibre.android.andesui.textfield.configurators
+package com.mercadolibre.android.andesui.textfield.bahaviours
 
 import android.text.Editable
 import android.text.InputFilter
@@ -14,33 +14,31 @@ private const val GENERIC_CHAR = '#'
  * @param digits sample 0123456789-
  * @param listener A filter to listen when the value has changed
  */
-fun AndesTextfield.configureMask(
-    mask: String,
-    digits: String? = null,
-    listener: ((newValue: String) -> Unit)? = null
-) {
-    this.textWatcher = TextFieldMaskWatcher(mask, listener).also {
-        this.counterAdapter = { s ->
-            it.cleanMask(s ?: "").length
+class MaskBehaviour(
+    val mask: String,
+    val digits: String? = null,
+    val listener: ((newValue: String) -> Unit)? = null
+) : AndesTextfield.Behaviour {
+    override fun configure(textField: AndesTextfield) {
+        textField.textWatcher = TextFieldMaskWatcher(mask, listener).also {
+            textField.counterAdapter = { s ->
+                it.cleanMask(s ?: "").length
+            }
+            if (mask.isNotEmpty()) {
+                textField.counter = it.cleanMask(mask).length
+            }
         }
-        if (mask.isNotEmpty()) {
-            this.counter = it.cleanMask(mask).length
-        }
+        textField.textDigits = digits
+        textField.textFilter = InputFilter.LengthFilter((mask.length))
     }
-    this.textDigits = digits
-    this.textFilter = InputFilter.LengthFilter((mask.length))
-}
 
-/**
- * Expansion to clear an previusly assigned mask.
- * Use this expansion to clean mask, watchers, digits.
- */
-fun AndesTextfield.clearMask() {
-    this.textWatcher = null
-    this.counterAdapter = null
-    this.textDigits = null
-    this.textFilter = null
-    this.counter = 0
+    override fun cleanup(textField: AndesTextfield) {
+        textField.textWatcher = null
+        textField.counterAdapter = null
+        textField.textDigits = null
+        textField.textFilter = null
+        textField.counter = 0
+    }
 }
 
 /**
