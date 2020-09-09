@@ -284,7 +284,7 @@ class AndesTextfield : ConstraintLayout {
         setupColorComponents(config)
         setupInputType()
         setupTextComponent(config)
-        setupCountfilter()
+        setupCountFilter()
         setupCounterWatcher()
         setupFilters()
     }
@@ -510,7 +510,7 @@ class AndesTextfield : ConstraintLayout {
         }
     }
 
-    private fun setupCountfilter() {
+    private fun setupCountFilter() {
         countFilter = object : InputFilter {
             override fun filter(
                 source: CharSequence,
