@@ -1,6 +1,7 @@
 # v2.11.0
 ## 🚀 Features
 - Changed target API level to 29.
+- AndesTextfield: Extension configureAsNumericField to configure monetary numeric inputs.
 
 ## Developer Experience
 - Linters upgraded to latest versions, and Findbugs replaced with Spotbugs.
