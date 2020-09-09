@@ -22,6 +22,8 @@ import com.mercadolibre.android.andesui.demoapp.feature.utils.PageIndicator
 import com.mercadolibre.android.andesui.demoapp.R
 import com.mercadolibre.android.andesui.textfield.AndesTextarea
 import com.mercadolibre.android.andesui.textfield.AndesTextfield
+import com.mercadolibre.android.andesui.textfield.configurators.clearMask
+import com.mercadolibre.android.andesui.textfield.configurators.configureMask
 import com.mercadolibre.android.andesui.textfield.content.AndesTextfieldLeftContent
 import com.mercadolibre.android.andesui.textfield.content.AndesTextfieldRightContent
 import com.mercadolibre.android.andesui.textfield.state.AndesTextfieldState
@@ -155,11 +157,11 @@ class TextfieldShowcaseActivity : AppCompatActivity() {
                 }
 
                 mask.text.takeIf { it.isNotEmpty() }?.apply {
-                    textfield.setTextFieldMask(it.toString())
+                    textfield.configureMask(it.toString())
                 }
 
                 if (mask.text.isNotEmpty()) {
-                    textfield.setTextFieldMask(mask.text.toString())
+                    textfield.configureMask(mask.text.toString())
                 }
 
                 val selectedInputType = getInputTypesArray().single {

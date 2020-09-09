@@ -1,6 +1,8 @@
 # v2.11.0
 ## 🚀 Features
 - Changed target API level to 29.
+- AndesTextfield: Remove mask from component @nesmarsollie
+- AndesTextfield: Add configureMask to handle masking inputs @nesmarsollie
 
 ## Developer Experience
 - Linters upgraded to latest versions, and Findbugs replaced with Spotbugs.
