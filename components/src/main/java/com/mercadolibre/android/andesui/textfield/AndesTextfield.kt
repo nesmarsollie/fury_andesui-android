@@ -198,6 +198,13 @@ class AndesTextfield : ConstraintLayout {
             }
         }
 
+    var behaviour: Behaviour? = null
+        set(value) {
+            field?.cleanup(this)
+            field = value
+            value?.configure(this)
+        }
+
     private lateinit var andesTextfieldAttrs: AndesTextfieldAttrs
     private lateinit var textfieldContainer: ConstraintLayout
     private lateinit var textContainer: ConstraintLayout
@@ -631,6 +638,11 @@ class AndesTextfield : ConstraintLayout {
     }
 
     private fun createConfig() = AndesTextfieldConfigurationFactory.create(context, andesTextfieldAttrs)
+
+    interface Behaviour {
+        fun configure(textField: AndesTextfield)
+        fun cleanup(textField: AndesTextfield)
+    }
 
     /**
      * Default values for AndesTextfield basic properties

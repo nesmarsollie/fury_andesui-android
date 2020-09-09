@@ -18,12 +18,11 @@ import android.widget.ScrollView
 import android.widget.Spinner
 import android.widget.Toast
 import com.mercadolibre.android.andesui.button.AndesButton
-import com.mercadolibre.android.andesui.demoapp.feature.utils.PageIndicator
 import com.mercadolibre.android.andesui.demoapp.R
+import com.mercadolibre.android.andesui.demoapp.feature.utils.PageIndicator
 import com.mercadolibre.android.andesui.textfield.AndesTextarea
 import com.mercadolibre.android.andesui.textfield.AndesTextfield
-import com.mercadolibre.android.andesui.textfield.configurators.clearMask
-import com.mercadolibre.android.andesui.textfield.configurators.configureMask
+import com.mercadolibre.android.andesui.textfield.bahaviours.MaskBehaviour
 import com.mercadolibre.android.andesui.textfield.content.AndesTextfieldLeftContent
 import com.mercadolibre.android.andesui.textfield.content.AndesTextfieldRightContent
 import com.mercadolibre.android.andesui.textfield.state.AndesTextfieldState
@@ -156,12 +155,8 @@ class TextfieldShowcaseActivity : AppCompatActivity() {
                     }
                 }
 
-                mask.text.takeIf { it.isNotEmpty() }?.apply {
-                    textfield.configureMask(it.toString())
-                }
-
-                if (mask.text.isNotEmpty()) {
-                    textfield.configureMask(mask.text.toString())
+                textfield.behaviour = mask.text.takeIf { it.isNotEmpty() }?.let {
+                    MaskBehaviour(it.toString())
                 }
 
                 val selectedInputType = getInputTypesArray().single {
@@ -193,7 +188,7 @@ class TextfieldShowcaseActivity : AppCompatActivity() {
                 textfield.inputType = InputType.TYPE_CLASS_DATETIME
                 textfield.leftContent = null
                 textfield.rightContent = null
-                textfield.clearMask()
+                textfield.behaviour = null
             }
 
             return layoutTextfield
