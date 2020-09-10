@@ -51,9 +51,11 @@ private class TextFieldMaskWatcher(
 ) : TextWatcher {
     private var enabled = true
 
+    @SuppressWarnings("EmptyFunctionBlock")
     override fun beforeTextChanged(charSequence: CharSequence, start: Int, count: Int, after: Int) {
     }
 
+    @SuppressWarnings("EmptyFunctionBlock")
     override fun onTextChanged(charSequence: CharSequence, start: Int, before: Int, count: Int) {
     }
 

@@ -538,9 +538,11 @@ class AndesTextfield : ConstraintLayout {
 
     private fun setupCounterWatcher() {
         textComponent.addTextChangedListener(object : TextWatcher {
+            @SuppressWarnings("EmptyFunctionBlock")
             override fun afterTextChanged(charSequence: Editable?) {
             }
 
+            @SuppressWarnings("EmptyFunctionBlock")
             override fun beforeTextChanged(charSeqeuence: CharSequence?, start: Int, count: Int, after: Int) {
             }
 

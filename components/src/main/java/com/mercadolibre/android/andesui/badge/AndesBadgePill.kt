@@ -1,5 +1,6 @@
 package com.mercadolibre.android.andesui.badge
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.support.v7.widget.CardView
@@ -19,7 +20,7 @@ import com.mercadolibre.android.andesui.badge.factory.AndesBadgePillConfiguratio
 import com.mercadolibre.android.andesui.badge.hierarchy.AndesBadgePillHierarchy
 import com.mercadolibre.android.andesui.badge.size.AndesBadgePillSize
 import com.mercadolibre.android.andesui.badge.type.AndesBadgeType
-import java.util.*
+import java.util.Locale
 
 class AndesBadgePill : CardView {
 
@@ -176,6 +177,7 @@ class AndesBadgePill : CardView {
         }
     }
 
+    @SuppressWarnings("MagicNumber")
     private fun setupBackground(config: AndesBadgePillConfiguration) {
         val shape = GradientDrawable()
 

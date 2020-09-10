@@ -24,8 +24,11 @@ class LoadingSpinner @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr) {
 
     private lateinit var primaryColor: Paint
+    @SuppressWarnings("MagicNumber")
     private var sweepAngle = 0
+    @SuppressWarnings("MagicNumber")
     private var startAngle = 0
+    @SuppressWarnings("MagicNumber")
     private var strokeSize = 5
     private lateinit var viewBounds: RectF
     private lateinit var currentColor: Paint
