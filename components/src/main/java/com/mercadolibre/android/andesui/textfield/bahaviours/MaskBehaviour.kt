@@ -15,21 +15,25 @@ private const val GENERIC_CHAR = '#'
  * @param listener A filter to listen when the value has changed
  */
 class MaskBehaviour(
-    val mask: String,
-    val digits: String? = null,
-    val listener: ((newValue: String) -> Unit)? = null
+    private val mask: String,
+    private val digits: String? = null,
+    private val listener: ((newValue: String) -> Unit)? = null
 ) : AndesTextfield.Behaviour {
     override fun configure(textField: AndesTextfield) {
+        textField.textDigits = digits
+
         textField.textWatcher = TextFieldMaskWatcher(mask, listener).also {
-            textField.counterAdapter = { s ->
-                it.cleanMask(s ?: "").length
-            }
             if (mask.isNotEmpty()) {
+                textField.counterAdapter = { s ->
+                    it.cleanMask(s ?: "").length
+                }
                 textField.counter = it.cleanMask(mask).length
             }
         }
-        textField.textDigits = digits
-        textField.textFilter = InputFilter.LengthFilter((mask.length))
+
+        if (mask.isNotEmpty()) {
+            textField.textFilter = InputFilter.LengthFilter(mask.length)
+        }
     }
 
     override fun cleanup(textField: AndesTextfield) {
