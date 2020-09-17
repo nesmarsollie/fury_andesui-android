@@ -29,7 +29,6 @@ import com.mercadolibre.android.andesui.textfield.factory.AndesTextfieldAttrsPar
 import com.mercadolibre.android.andesui.textfield.factory.AndesTextfieldConfiguration
 import com.mercadolibre.android.andesui.textfield.factory.AndesTextfieldConfigurationFactory
 import com.mercadolibre.android.andesui.textfield.state.AndesTextfieldState
-import com.mercadolibre.android.andesui.textfield.state.AndesTextfieldState.READONLY
 import com.mercadolibre.android.andesui.utils.buildColoredAndesBitmapDrawable
 
 @Suppress("TooManyFunctions")
@@ -320,7 +319,7 @@ class AndesTextfield : ConstraintLayout {
     }
 
     private fun setupEnabledView() {
-        if (state == AndesTextfieldState.DISABLED || state == READONLY) {
+        if (state == AndesTextfieldState.DISABLED || state == AndesTextfieldState.READONLY) {
             isEnabled = false
             textComponent.isEnabled = isEnabled
             textContainer.isEnabled = isEnabled
@@ -359,7 +358,7 @@ class AndesTextfield : ConstraintLayout {
         textContainer.background = config.background
 
         iconComponent.setImageDrawable(config.icon)
-        if (config.icon != null && state != READONLY) {
+        if (config.icon != null && state != AndesTextfieldState.READONLY) {
             if (!config.helperText.isNullOrEmpty()) {
                 iconComponent.visibility = View.VISIBLE
             }
@@ -396,7 +395,7 @@ class AndesTextfield : ConstraintLayout {
      * Gets data from the config and sets to the Helper component.
      */
     private fun setupHelperComponent(config: AndesTextfieldConfiguration) {
-        if (config.helperText == null || config.helperText.isEmpty() || state == READONLY) {
+        if (config.helperText == null || config.helperText.isEmpty() || state == AndesTextfieldState.READONLY) {
             helperComponent.visibility = View.GONE
         } else {
             helperComponent.visibility = View.VISIBLE
@@ -409,7 +408,7 @@ class AndesTextfield : ConstraintLayout {
      * Gets data from the config and sets to the Counter component.
      */
     private fun setupCounterComponent(config: AndesTextfieldConfiguration) {
-        if (config.counterLength != 0 && state != READONLY && showCounter) {
+        if (config.counterLength != 0 && state != AndesTextfieldState.READONLY && showCounter) {
             counterComponent.visibility = View.VISIBLE
             counterComponent.setTextSize(TypedValue.COMPLEX_UNIT_PX, config.counterSize)
             counterComponent.text = resources.getString(
@@ -452,7 +451,7 @@ class AndesTextfield : ConstraintLayout {
 
     private fun setupMarginStartTextComponent() {
         val params = textComponent.layoutParams as LayoutParams
-        if (state == READONLY) {
+        if (state == AndesTextfieldState.READONLY) {
             params.goneStartMargin = context.resources.getDimension(R.dimen.andes_textfield_label_paddingLeft).toInt()
         } else {
             params.goneStartMargin = context.resources.getDimension(R.dimen.andes_textfield_margin).toInt()
@@ -510,6 +509,10 @@ class AndesTextfield : ConstraintLayout {
         }
     }
 
+    /**
+     * The count filter is a filter that prevents the user write more
+     * characters than the spected, and configured in andesTextfieldAttrs.counter
+     */
     private fun setupCountFilter() {
         countFilter = object : InputFilter {
             override fun filter(
@@ -519,7 +522,7 @@ class AndesTextfield : ConstraintLayout {
                 dstart: Int,
                 dend: Int
             ): CharSequence? {
-                if (andesTextfieldAttrs.counter <= 0 || state == READONLY) {
+                if (andesTextfieldAttrs.counter <= 0 || state == AndesTextfieldState.READONLY) {
                     return null
                 }
 
@@ -536,6 +539,10 @@ class AndesTextfield : ConstraintLayout {
         }
     }
 
+    /**
+     * CounterWatcher is a watcher to check counter, and update
+     * the count numbers at the bottom right section of the field.
+     */
     private fun setupCounterWatcher() {
         textComponent.addTextChangedListener(object : TextWatcher {
             @SuppressWarnings("EmptyFunctionBlock")
@@ -547,7 +554,7 @@ class AndesTextfield : ConstraintLayout {
             }
 
             override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
-                if (!andesTextfieldAttrs.showCounter || state == READONLY) {
+                if (!andesTextfieldAttrs.showCounter || state == AndesTextfieldState.READONLY) {
                     return
                 }
 
@@ -567,7 +574,7 @@ class AndesTextfield : ConstraintLayout {
         rightContent = AndesTextfieldRightContent.ACTION
         val action: AndesButton = rightComponent.getChildAt(0) as AndesButton
         action.text = text
-        action.isEnabled = state != READONLY && state != AndesTextfieldState.DISABLED
+        action.isEnabled = state != AndesTextfieldState.READONLY && state != AndesTextfieldState.DISABLED
         action.setOnClickListener(onClickListener)
     }
 
@@ -641,8 +648,23 @@ class AndesTextfield : ConstraintLayout {
 
     private fun createConfig() = AndesTextfieldConfigurationFactory.create(context, andesTextfieldAttrs)
 
+    /**
+     * This interface is used to configure and cleanup a custom behaviour over this
+     * component.
+     *
+     * Implement this interface to configure this field in some way, then you can
+     * assign behaviour field with that implementation.
+     *
+     */
     interface Behaviour {
+        /**
+         * This function will be called to congiure the given parameter
+         */
         fun configure(textField: AndesTextfield)
+
+        /**
+         * Implement a release strategy to cleanup the configuration.s
+         */
         fun cleanup(textField: AndesTextfield)
     }
 

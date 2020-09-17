@@ -1,6 +1,5 @@
 package com.mercadolibre.android.andesui.demoapp.feature
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.content.ContextCompat

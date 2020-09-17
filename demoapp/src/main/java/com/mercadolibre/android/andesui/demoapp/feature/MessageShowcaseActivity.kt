@@ -1,6 +1,5 @@
 package com.mercadolibre.android.andesui.demoapp.feature
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.view.PagerAdapter
@@ -16,10 +15,10 @@ import android.widget.Toast
 import com.mercadolibre.android.andesui.button.AndesButton
 import com.mercadolibre.android.andesui.checkbox.AndesCheckbox
 import com.mercadolibre.android.andesui.checkbox.status.AndesCheckboxStatus
-import com.mercadolibre.android.andesui.demoapp.feature.specs.AndesSpecs
-import com.mercadolibre.android.andesui.demoapp.feature.utils.PageIndicator
 import com.mercadolibre.android.andesui.demoapp.R
+import com.mercadolibre.android.andesui.demoapp.feature.specs.AndesSpecs
 import com.mercadolibre.android.andesui.demoapp.feature.specs.launchSpecs
+import com.mercadolibre.android.andesui.demoapp.feature.utils.PageIndicator
 import com.mercadolibre.android.andesui.message.AndesMessage
 import com.mercadolibre.android.andesui.message.bodylinks.AndesBodyLink
 import com.mercadolibre.android.andesui.message.bodylinks.AndesBodyLinks
@@ -177,8 +176,8 @@ class MessageShowcaseActivity : AppCompatActivity() {
                             changeMessage.setupSecondaryAction(
                                 secondaryActionText.text.toString(),
                                 View.OnClickListener {
-                                            Toast.makeText(context, "Secondary onClick", Toast.LENGTH_SHORT).show()
-                                        }
+                                    Toast.makeText(context, "Secondary onClick", Toast.LENGTH_SHORT).show()
+                                }
                             )
                         }
                         else -> {
@@ -233,57 +232,57 @@ class MessageShowcaseActivity : AppCompatActivity() {
             }
 
             layoutMessages.findViewById<AndesMessage>(R.id.messagePrimaryAction)
-                    .setupPrimaryAction(
-                        "Primary",
-                        View.OnClickListener {
-                            Toast.makeText(context, "Primary onClick", Toast.LENGTH_SHORT).show()
-                        }
-                    )
+                .setupPrimaryAction(
+                    "Primary",
+                    View.OnClickListener {
+                        Toast.makeText(context, "Primary onClick", Toast.LENGTH_SHORT).show()
+                    }
+                )
 
             layoutMessages.findViewById<AndesMessage>(R.id.messagePrimaryAndSecondaryActionQuiet)
-                    .setupPrimaryAction(
-                        "Primary",
-                        View.OnClickListener {
-                            Toast.makeText(context, "Primary onClick", Toast.LENGTH_SHORT).show()
-                        }
-                    )
+                .setupPrimaryAction(
+                    "Primary",
+                    View.OnClickListener {
+                        Toast.makeText(context, "Primary onClick", Toast.LENGTH_SHORT).show()
+                    }
+                )
             layoutMessages.findViewById<AndesMessage>(R.id.messagePrimaryAndSecondaryActionQuiet)
-                    .setupSecondaryAction(
-                        "Secondary",
-                        View.OnClickListener {
-                            Toast.makeText(context, "Secondary onClick", Toast.LENGTH_SHORT).show()
-                        }
-                    )
+                .setupSecondaryAction(
+                    "Secondary",
+                    View.OnClickListener {
+                        Toast.makeText(context, "Secondary onClick", Toast.LENGTH_SHORT).show()
+                    }
+                )
 
             layoutMessages.findViewById<AndesMessage>(R.id.messagePrimaryAndSecondaryActionLoud)
-                    .setupPrimaryAction(
-                        "Primary",
-                        View.OnClickListener {
-                            Toast.makeText(context, "Primary onClick", Toast.LENGTH_SHORT).show()
-                        }
-                    )
+                .setupPrimaryAction(
+                    "Primary",
+                    View.OnClickListener {
+                        Toast.makeText(context, "Primary onClick", Toast.LENGTH_SHORT).show()
+                    }
+                )
             layoutMessages.findViewById<AndesMessage>(R.id.messagePrimaryAndSecondaryActionLoud)
-                    .setupSecondaryAction(
-                        "Secondary",
-                        View.OnClickListener {
-                            Toast.makeText(context, "Secondary onClick", Toast.LENGTH_SHORT).show()
-                        }
-                    )
+                .setupSecondaryAction(
+                    "Secondary",
+                    View.OnClickListener {
+                        Toast.makeText(context, "Secondary onClick", Toast.LENGTH_SHORT).show()
+                    }
+                )
 
             layoutMessages.findViewById<AndesMessage>(R.id.messageLinkLoud)
-                    .setupLinkAction(
-                        "Link",
-                        View.OnClickListener {
-                            Toast.makeText(context, "Link onClick", Toast.LENGTH_SHORT).show()
-                        }
-                    )
+                .setupLinkAction(
+                    "Link",
+                    View.OnClickListener {
+                        Toast.makeText(context, "Link onClick", Toast.LENGTH_SHORT).show()
+                    }
+                )
             layoutMessages.findViewById<AndesMessage>(R.id.messageLinkQuiet)
-                    .setupLinkAction(
-                        "Link",
-                        View.OnClickListener {
-                            Toast.makeText(context, "Link onClick", Toast.LENGTH_SHORT).show()
-                        }
-                    )
+                .setupLinkAction(
+                    "Link",
+                    View.OnClickListener {
+                        Toast.makeText(context, "Link onClick", Toast.LENGTH_SHORT).show()
+                    }
+                )
             val links = listOf(
                 AndesBodyLink(6, 11),
                 AndesBodyLink(64, 71)
