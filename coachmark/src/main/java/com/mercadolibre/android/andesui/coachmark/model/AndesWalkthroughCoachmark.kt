@@ -3,6 +3,12 @@ import androidx.core.widget.NestedScrollView
 import android.view.View
 import java.io.Serializable
 
+data class AndesScrollessWalkthroughCoachmark(
+        val steps: MutableList<AndesWalkthroughCoachmarkStep>,
+        val view: View,
+        val completionHandler: () -> Unit
+) : Serializable
+
 data class AndesWalkthroughCoachmark(
     val steps: MutableList<AndesWalkthroughCoachmarkStep>,
     val scrollView: NestedScrollView,
@@ -13,11 +19,13 @@ data class AndesWalkthroughCoachmarkStep(
     val title: String,
     val description: String,
     val nextText: String,
-    val view: View,
+    var view: View,
     val style: AndesWalkthroughCoachmarkStyle
 ) : Serializable
 
 enum class AndesWalkthroughCoachmarkStyle {
     CIRCLE,
-    RECTANGLE
+    RECTANGLE,
+    HAMBURGER,
+    MENU_ITEM
 }

@@ -134,10 +134,19 @@ internal class CoachmarkPresenter(private val view: CoachmarkViewInterface) {
     }
 
     fun addRect(stepReferenced: AndesWalkthroughCoachmarkStep) {
-        if (stepReferenced.style == AndesWalkthroughCoachmarkStyle.CIRCLE) {
-            view.addCircleRect(stepReferenced)
-        } else {
-            view.addRoundRect(stepReferenced)
+        when (stepReferenced.style) {
+            AndesWalkthroughCoachmarkStyle.CIRCLE -> {
+                view.addCircleRect(stepReferenced)
+            }
+            AndesWalkthroughCoachmarkStyle.RECTANGLE -> {
+                view.addRoundRect(stepReferenced)
+            }
+            AndesWalkthroughCoachmarkStyle.MENU_ITEM -> {
+                view.addRoundRect(stepReferenced)
+            }
+            else -> {
+                view.addRoundRect(stepReferenced)
+            }
         }
     }
 
