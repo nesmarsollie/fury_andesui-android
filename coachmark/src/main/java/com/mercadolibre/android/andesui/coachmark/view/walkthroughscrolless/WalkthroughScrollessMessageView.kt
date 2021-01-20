@@ -35,10 +35,16 @@ class WalkthroughScrollessMessageView @JvmOverloads constructor(
     }
 
     fun setData(data: WalkthroughMessageModel) {
-        walkthroughTitle.text = data.title
         walkthroughDescription.text = data.description
-        walkthroughTitle.visibility = View.VISIBLE
         walkthroughDescription.visibility = View.VISIBLE
+
+
+        if (data.title.isNotEmpty()) {
+            walkthroughTitle.text = data.title
+            walkthroughTitle.visibility = View.VISIBLE
+        } else {
+            walkthroughTitle.visibility = View.GONE
+        }
 
         if (data.buttonText.isNotEmpty()) {
             walkthroughNextButton.text = data.buttonText

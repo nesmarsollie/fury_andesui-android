@@ -52,7 +52,7 @@
             android:gravity="center"
             android:lineSpacingExtra="4dp"
             android:textColor="@color/andes_white"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,20 +61,25 @@
             tools:visibility="visible" />
 
 
-        <com.mercadolibre.android.andesui.button.AndesButton
+        <TextView
             android:id="@+id/walkthroughNextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:textSize="20sp"
+            android:textColor="@color/andes_white"
+            android:paddingTop="@dimen/andes_coachmark_next_button_radius_top_bottom"
+            android:paddingBottom="@dimen/andes_coachmark_next_button_radius_top_bottom"
+            android:paddingRight="@dimen/andes_coachmark_next_button_radius_left_right"
+            android:paddingLeft="@dimen/andes_coachmark_next_button_radius_left_right"
             android:visibility="gone"
-            app:andesButtonHierarchy="quiet"
-            app:andesButtonSize="large"
+            android:background="@drawable/andes_walkthrough_configuration_button_background"
             app:layout_constraintBottom_toTopOf="@+id/arcArrowBottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/walkthroughDescription"
-            tools:andesButtonText="Siguiente"
-            tools:visibility="gone" />
+            tools:text="Siguiente"
+            tools:visibility="visible" />
 
         <com.mercadolibre.android.andesui.coachmark.view.walkthroughmessage.ArcArrow
             android:id="@+id/arcArrowBottom"

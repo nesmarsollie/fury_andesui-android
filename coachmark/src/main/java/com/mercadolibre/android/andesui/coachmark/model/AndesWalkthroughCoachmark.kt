@@ -15,12 +15,13 @@ data class AndesWalkthroughCoachmark(
     val completionHandler: () -> Unit
 ) : Serializable
 
-data class AndesWalkthroughCoachmarkStep(
+data class AndesWalkthroughCoachmarkStep @JvmOverloads constructor(
     val title: String,
     val description: String,
     val nextText: String,
     var view: View,
-    val style: AndesWalkthroughCoachmarkStyle
+    val style: AndesWalkthroughCoachmarkStyle,
+    val showPadding: Boolean = true
 ) : Serializable
 
 enum class AndesWalkthroughCoachmarkStyle {

@@ -280,7 +280,8 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
                 0,
                 0,
                 true,
-                radius
+                radius,
+                stepReferenced.showPadding
         )
     }
 
@@ -301,7 +302,8 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
                     rect.top - activity.resources.getDimension(R.dimen.andes_coachmark_toolbar_status_bar).toInt() / 3,
                     rect.width(),
                     rect.height(),
-                    false
+                    false,
+                    showPadding = stepReferenced.showPadding
             )
         } else {
             coachmarkOverlayView.addRect(
@@ -309,7 +311,8 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
                     rect.top - activity.resources.getDimension(R.dimen.andes_coachmark_toolbar_status_bar).toInt(),
                     rect.width(),
                     rect.height(),
-                    false
+                    false,
+                    showPadding = stepReferenced.showPadding
             )
         }
     }
