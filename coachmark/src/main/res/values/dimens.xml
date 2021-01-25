@@ -70,6 +70,6 @@
     <dimen name="andes_coachmark_default_radius_overlay">8dp</dimen>
     <dimen name="andes_coachmark_padding_border_overlay">3dp</dimen>
 
-    <dimen name="andes_coachmark_next_button_radius_top_bottom">12dp</dimen>
+    <dimen name="andes_coachmark_next_button_radius_top_bottom">16dp</dimen>
     <dimen name="andes_coachmark_next_button_radius_left_right">16dp</dimen>
 </resources>

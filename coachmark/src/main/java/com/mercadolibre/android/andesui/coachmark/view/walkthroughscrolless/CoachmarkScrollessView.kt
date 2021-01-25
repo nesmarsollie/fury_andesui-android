@@ -7,9 +7,11 @@ import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.pm.ActivityInfo
 import android.graphics.Rect
+import android.os.Build
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.view.WindowManager
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -17,7 +19,10 @@ import androidx.core.view.ViewPropertyAnimatorListenerAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mercadolibre.android.andesui.coachmark.CoachmarkTracking
 import com.mercadolibre.android.andesui.coachmark.R
-import com.mercadolibre.android.andesui.coachmark.model.*
+import com.mercadolibre.android.andesui.coachmark.model.AndesScrollessWalkthroughCoachmark
+import com.mercadolibre.android.andesui.coachmark.model.AndesWalkthroughCoachmarkStep
+import com.mercadolibre.android.andesui.coachmark.model.AndesWalkthroughCoachmarkStyle
+import com.mercadolibre.android.andesui.coachmark.model.WalkthroughMessageModel
 import com.mercadolibre.android.andesui.coachmark.presenter.CoachmarkPresenter
 import com.mercadolibre.android.andesui.coachmark.presenter.CoachmarkViewInterface
 import com.mercadolibre.android.andesui.coachmark.view.CoachmarkOverlay
@@ -32,10 +37,13 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
     private val walkthroughScrollessMessageView: WalkthroughScrollessMessageView
     private val coachmarkContainer: CoachmarkScrollessContainerView
     private var previousOrientationScreen = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+    private var lastPosition = false
+    private val statusBarColor: Int
 
     init {
         val coachmarkData = builder.coachmarkData
         activity = builder.activity
+        statusBarColor = getStatusBarColor()
         view = coachmarkData.view
         walkthroughScrollessMessageView = WalkthroughScrollessMessageView(activity)
         baseContainer = FrameLayout(activity)
@@ -47,6 +55,7 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
         initContainer()
         setNextView(0, coachmarkData)
         initListeners(coachmarkData, builder.onTrackingListener)
+        changeStatusBarColor(R.color.andes_gray_950)
     }
 
     private fun initContainer() {
@@ -94,7 +103,6 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
 
         coachmarkContainer.setListener(object : CoachmarkScrollessContainerView.CoachmarkContainerListener {
             override fun onClickClose(position: Int) {
-
                 onTrackingListener?.onClose(position)
                 dismiss(coachmarkData.completionHandler)
             }
@@ -113,6 +121,7 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
                                 override fun onAnimationEnd(animation: Animator) {
                                     super.onAnimationEnd(animation)
 
+                                    lastPosition = (coachmarkData.steps.size - 1) == (position + 1)
                                     walkthroughScrollessMessageView.clearAnimation()
                                     presenter.restorePreviousValues()
                                     setNextView(position + 1, coachmarkData)
@@ -132,7 +141,6 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
      * @param coachmarkData informacion necesaria para resaltar el siguiente step
      */
     private fun setNextView(position: Int, coachmarkData: AndesScrollessWalkthroughCoachmark) {
-
         val stepReferenced = coachmarkData.steps[position]
         walkthroughScrollessMessageView.setPosition(position)
         coachmarkContainer.setData(position, coachmarkData.steps.size)
@@ -158,6 +166,20 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
         })
     }
 
+    private fun getStatusBarColor() : Int {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return activity.window?.statusBarColor ?: activity.resources.getColor(R.color.andes_accent_color_500)
+        }
+        return activity.resources.getColor(R.color.andes_accent_color_500)
+    }
+
+    private fun changeStatusBarColor(statusBarColor: Int) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            activity.window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            activity.window.statusBarColor = statusBarColor
+        }
+    }
+
     private fun scroll(stepReferenced: AndesWalkthroughCoachmarkStep) {
 
         if (stepReferenced.style == AndesWalkthroughCoachmarkStyle.HAMBURGER){
@@ -171,7 +193,8 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
         coachmarkOverlayView.getGlobalVisibleRect(overlayRect)
 
         walkthroughScrollessMessageView.definePosition(overlayRect, stepReferenceGlobalRect)
-        walkthroughScrollessMessageView.setData(WalkthroughMessageModel(stepReferenced.title, stepReferenced.description, stepReferenced.nextText))
+        walkthroughScrollessMessageView.setData(WalkthroughMessageModel(stepReferenced.title,
+                stepReferenced.description, stepReferenced.nextText), lastPosition)
 
         walkthroughScrollessMessageView.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
@@ -398,7 +421,7 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
      * @param onAfterDismissListener listener que ejecuta luego de quitar coachmark
      */
     fun dismiss(onAfterDismissListener: (() -> Unit)?) {
-
+        changeStatusBarColor(statusBarColor)
         walkthroughScrollessMessageView.visibility = View.GONE
         activity.requestedOrientation = previousOrientationScreen
         presenter.restorePreviousValues()

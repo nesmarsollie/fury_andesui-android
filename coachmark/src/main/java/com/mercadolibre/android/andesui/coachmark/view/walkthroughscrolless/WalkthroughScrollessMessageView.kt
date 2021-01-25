@@ -24,6 +24,7 @@ class WalkthroughScrollessMessageView @JvmOverloads constructor(
         inflate(context, R.layout.andes_walkthrough_scrolless_message, this)
         walkthroughTitle.typeface = context.getFontOrDefault(R.font.andes_font_semibold)
         walkthroughDescription.typeface = context.getFontOrDefault(R.font.andes_font_regular)
+        walkthroughNextButton.typeface = context.getFontOrDefault(R.font.andes_font_semibold)
     }
 
     fun setListener(l: WalkthroughButtonClicklistener) {
@@ -34,16 +35,28 @@ class WalkthroughScrollessMessageView @JvmOverloads constructor(
         walkthroughNextButton.setOnClickListener { listener?.onClickNextButton(position) }
     }
 
-    fun setData(data: WalkthroughMessageModel) {
+    fun setData(data: WalkthroughMessageModel, lastPosition: Boolean) {
+        if (lastPosition) {
+            walkthroughNextButton.setBackgroundResource(R.drawable.andes_walkthrough_configuration_blue_button_background)
+        } else {
+            walkthroughNextButton.setBackgroundResource(R.drawable.andes_walkthrough_configuration_button_background)
+        }
+
         walkthroughDescription.text = data.description
         walkthroughDescription.visibility = View.VISIBLE
-
 
         if (data.title.isNotEmpty()) {
             walkthroughTitle.text = data.title
             walkthroughTitle.visibility = View.VISIBLE
         } else {
             walkthroughTitle.visibility = View.GONE
+        }
+
+        if (data.description.isNotEmpty()) {
+            walkthroughDescription.text = data.title
+            walkthroughDescription.visibility = View.VISIBLE
+        } else {
+            walkthroughDescription.visibility = View.GONE
         }
 
         if (data.buttonText.isNotEmpty()) {
