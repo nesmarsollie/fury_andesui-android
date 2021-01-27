@@ -31,7 +31,7 @@ internal class CoachmarkPresenter(private val view: CoachmarkViewInterface) {
 
         stepReferenced.view.let {
             val isBodyMoreBottom = bodyGlobalRect.bottom < stepReferenceGlobalRect.bottom
-            if (isBodyMoreBottom || !it.getLocalVisibleRect(bodyGlobalRect) || bodyGlobalRect.height() < it.height) {
+            if (isBodyMoreBottom || !it!!.getLocalVisibleRect(bodyGlobalRect) || bodyGlobalRect.height() < it!!.height) {
                 resolvePartialOrNotViewedReferenceView(
                         stepReferenced,
                         heightScreen,

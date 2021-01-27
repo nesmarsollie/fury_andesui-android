@@ -4,7 +4,7 @@ import android.view.View
 import java.io.Serializable
 
 data class AndesScrollessWalkthroughCoachmark(
-        val steps: MutableList<AndesWalkthroughCoachmarkStep>,
+        var steps: MutableList<AndesWalkthroughCoachmarkStep>,
         val view: View,
         val completionHandler: () -> Unit
 ) : Serializable
@@ -19,7 +19,7 @@ data class AndesWalkthroughCoachmarkStep @JvmOverloads constructor(
     val title: String,
     val description: String,
     val nextText: String,
-    var view: View,
+    var view: View?,
     val style: AndesWalkthroughCoachmarkStyle,
     val showPadding: Boolean = true
 ) : Serializable
