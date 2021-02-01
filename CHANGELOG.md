@@ -1,6 +1,6 @@
 # Sin Publicar
 ## 🚀 Feature
-- Added "Question" and "Mail" icons | Authors: [@amacagno](https://github.com/amacagno)
+- Added "Question" and "Mail" icons. | Authors: [@amacagno](https://github.com/amacagno)
 
 # v3.7.0
 ## 🚀 Feature
