@@ -4,6 +4,7 @@
 
 ## 🛠 Fixes
 - Demoapp thumbnail showcase with same resource id as component fixed
+- Dropdown label deleted in standalone type | Author: [@snti](https://github.com/snti)
 
 # v3.6.1
 ## 🛠 Fixes

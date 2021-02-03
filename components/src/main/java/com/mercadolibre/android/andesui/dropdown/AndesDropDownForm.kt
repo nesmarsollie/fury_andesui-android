@@ -28,7 +28,7 @@ class AndesDropDownForm : ConstraintLayout, AndesListDelegate {
     private lateinit var andesDropdownDelegate: AndesDropdownDelegate
     private lateinit var andesDropdownAttrs: AndesDropdownAttrs
     private lateinit var andesTextfield: AndesTextfield
-    var listItems: MutableList<AndesDropDownItem> = mutableListOf()
+    private var listItems: List<AndesDropDownItem> = listOf()
 
     /**
      * Getter and setter for [label].
@@ -174,6 +174,13 @@ class AndesDropDownForm : ConstraintLayout, AndesListDelegate {
         }
     }
 
+    /**
+     * Sets the list of item that the Dropdown will draw
+     */
+    fun setItems(listItems: List<AndesDropDownItem>){
+        this.listItems = listItems
+    }
+
     private fun openBottomSheet() {
         bottomSheetDialog.show()
     }
@@ -215,6 +222,16 @@ class AndesDropDownForm : ConstraintLayout, AndesListDelegate {
     }
 
     override fun onItemClick(andesList: AndesList, position: Int) {
+        selectItem(position)
+
+        andesList.refreshListAdapter()
+
+        delegate.onItemSelected(this, position)
+
+        bottomSheetDialog.dismiss()
+    }
+
+    private fun selectItem(position: Int){
         val itemSelected = listItems[position]
 
         listItems.forEach {
@@ -222,10 +239,6 @@ class AndesDropDownForm : ConstraintLayout, AndesListDelegate {
         }
 
         andesTextfield.text = itemSelected.title
-
-        delegate.onItemSelected(this, position)
-
-        bottomSheetDialog.dismiss()
     }
 
     override fun bind(andesList: AndesList, view: View, position: Int): AndesListViewItem {

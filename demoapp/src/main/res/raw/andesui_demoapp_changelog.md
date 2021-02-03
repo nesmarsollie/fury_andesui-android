@@ -4,6 +4,7 @@
 
 ## 🛠 Fixes
 - Demoapp thumbnail showcase with same resource id as component fixed
+- Dropdown label deleted in standalone type | Author: [@snti](https://github.com/snti)
 
 # v3.6.1
 ## 🛠 Fixes
@@ -23,9 +24,6 @@
 # v3.5.0
 ## 🚀 Feature
 - AndesMessage With Thumbnnail | Authors [a0zamora](https://github.com/a0zamora)
-
-### ⚙️ Other
-- Disable bot for issues | Authors [joalonspint](https://github.com/joalonsopint)
 
 # v3.4.0
 ## 🚀 Features
