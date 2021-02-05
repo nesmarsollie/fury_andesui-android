@@ -5,7 +5,7 @@ import java.io.Serializable
 
 data class AndesScrollessWalkthroughCoachmark(
         var steps: MutableList<AndesWalkthroughCoachmarkStep>,
-        val view: View,
+        val anchorView: View,
         val completionHandler: () -> Unit
 ) : Serializable
 

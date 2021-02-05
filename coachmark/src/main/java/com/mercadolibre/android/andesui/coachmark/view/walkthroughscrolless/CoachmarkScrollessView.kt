@@ -45,7 +45,7 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
         coachmarkData.steps = filterEmptySteps(builder.coachmarkData) as MutableList<AndesWalkthroughCoachmarkStep>
         activity = builder.activity
         statusBarColor = getStatusBarColor()
-        view = coachmarkData.view
+        view = coachmarkData.anchorView
         walkthroughScrollessMessageView = WalkthroughScrollessMessageView(activity)
         baseContainer = FrameLayout(activity)
         coachmarkContainer = CoachmarkScrollessContainerView(activity)

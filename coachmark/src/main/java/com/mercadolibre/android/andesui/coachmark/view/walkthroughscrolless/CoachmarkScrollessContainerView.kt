@@ -15,19 +15,19 @@ class CoachmarkScrollessContainerView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
-    private var listener: CoachmarkContainerListener? = null
+    private var coachMarkContainerListener: CoachmarkContainerListener? = null
 
     init {
         inflate(context, R.layout.andes_walkthrough_scrolless_container, this)
         counterText.typeface = context.getFontOrDefault(R.font.andes_font_regular)
     }
 
-    fun setListener(l: CoachmarkContainerListener) {
-        listener = l
+    fun setListener(coachMarkContainerListener: CoachmarkContainerListener) {
+        this.coachMarkContainerListener = coachMarkContainerListener
     }
 
     fun setData(position: Int, size: Int) {
-        closeButton.setOnClickListener { listener?.onClickClose(position) }
+        closeButton.setOnClickListener { coachMarkContainerListener?.onClickClose(position) }
         counterText.text = context.resources.getString(R.string.andes_coachmark_header_numeration_of, position + 1, size)
     }
 
@@ -35,7 +35,7 @@ class CoachmarkScrollessContainerView @JvmOverloads constructor(
         return hamburguerView
     }
 
-    fun getHeaderView(): CoachmarkOverlay {
+    internal fun getHeaderView(): CoachmarkOverlay {
         return headerBackground
     }
 
