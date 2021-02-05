@@ -3,6 +3,7 @@
 - Added new icons for "To Agree" and "Info" (with outer circle)
 
 ## 🛠 Fixes
+- Demoapp Dropdown activity scrollview container added to avoid cutting content
 - Demoapp thumbnail showcase with same resource id as component fixed
 - Dropdown label deleted in standalone type | Author: [@snti](https://github.com/snti)
 
