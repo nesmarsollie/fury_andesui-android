@@ -11,7 +11,7 @@ import android.util.AttributeSet
 import android.view.View
 import com.mercadolibre.android.andesui.coachmark.R
 
-class CoachmarkOverlay @JvmOverloads constructor(
+internal class CoachmarkOverlay @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0

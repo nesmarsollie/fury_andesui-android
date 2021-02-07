@@ -42,9 +42,10 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
 
     init {
         val coachmarkData = builder.coachmarkData
+        coachmarkData.steps = filterEmptySteps(builder.coachmarkData) as MutableList<AndesWalkthroughCoachmarkStep>
         activity = builder.activity
         statusBarColor = getStatusBarColor()
-        view = coachmarkData.view
+        view = coachmarkData.anchorView
         walkthroughScrollessMessageView = WalkthroughScrollessMessageView(activity)
         baseContainer = FrameLayout(activity)
         coachmarkContainer = CoachmarkScrollessContainerView(activity)
@@ -56,6 +57,12 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
         setNextView(0, coachmarkData)
         initListeners(coachmarkData, builder.onTrackingListener)
         changeStatusBarColor(R.color.andes_gray_950)
+    }
+
+    private fun filterEmptySteps(coachmarkData: AndesScrollessWalkthroughCoachmark) : List<AndesWalkthroughCoachmarkStep> {
+        return coachmarkData.steps.toList().filter { coachmarkStep ->
+            coachmarkStep.view != null
+        }
     }
 
     private fun initContainer() {
@@ -110,7 +117,6 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
 
         walkthroughScrollessMessageView.setListener(object : WalkthroughScrollessMessageView.WalkthroughButtonClicklistener {
             override fun onClickNextButton(position: Int) {
-
                 if (coachmarkData.steps.size == position + 1) {
                     dismiss(coachmarkData.completionHandler)
                 } else {
@@ -187,7 +193,7 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
         }
 
         val stepReferenceGlobalRect = Rect()
-        stepReferenced.view.getGlobalVisibleRect(stepReferenceGlobalRect)
+        stepReferenced.view?.getGlobalVisibleRect(stepReferenceGlobalRect)
 
         val overlayRect = Rect()
         coachmarkOverlayView.getGlobalVisibleRect(overlayRect)
@@ -202,7 +208,7 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
                 presenter.resolveScrollMode(
                         stepReferenced,
                         coachmarkOverlayView.height,
-                        stepReferenced.view.height,
+                        stepReferenced.view?.height ?: 0,
                         stepReferenceGlobalRect,
                         overlayRect,
                         walkthroughScrollessMessageView.getChildAt(0).height,
@@ -256,7 +262,7 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
      */
     override fun addTarget(stepReferenced: AndesWalkthroughCoachmarkStep) {
 
-        stepReferenced.view.viewTreeObserver?.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
+        stepReferenced.view?.viewTreeObserver?.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
             override fun onPreDraw(): Boolean {
                 if (stepReferenced.style == AndesWalkthroughCoachmarkStyle.MENU_ITEM
                         || stepReferenced.style == AndesWalkthroughCoachmarkStyle.HAMBURGER) {
@@ -275,11 +281,11 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
                 }
 
                 setTooltipAlignment(stepReferenced)
-                stepReferenced.view.viewTreeObserver?.removeOnPreDrawListener(this)
+                stepReferenced.view?.viewTreeObserver?.removeOnPreDrawListener(this)
                 return false
             }
         })
-        stepReferenced.view.postInvalidate()
+        stepReferenced.view?.postInvalidate()
     }
 
     /**
@@ -290,7 +296,7 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
     override fun addCircleRect(stepReferenced: AndesWalkthroughCoachmarkStep) {
 
         val rect = Rect()
-        stepReferenced.view.getGlobalVisibleRect(rect)
+        stepReferenced.view?.getGlobalVisibleRect(rect)
         val cx = rect.centerX()
         val cy = rect.centerY()
 
@@ -316,7 +322,7 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
     override fun addRoundRect(stepReferenced: AndesWalkthroughCoachmarkStep) {
 
         val rect = Rect()
-        stepReferenced.view.getGlobalVisibleRect(rect)
+        stepReferenced.view?.getGlobalVisibleRect(rect)
 
         if(stepReferenced.style == AndesWalkthroughCoachmarkStyle.MENU_ITEM
                 || stepReferenced.style == AndesWalkthroughCoachmarkStyle.HAMBURGER) {
@@ -346,7 +352,7 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
 
                 val tooltipHeight = walkthroughScrollessMessageView.getChildAt(0).height
                 val targetRect = Rect()
-                stepReferenced.view.getGlobalVisibleRect(targetRect)
+                stepReferenced.view?.getGlobalVisibleRect(targetRect)
                 presenter.relocateTooltip(tooltipHeight, walkthroughScrollessMessageView.getPosition(), targetRect)
 
                 walkthroughScrollessMessageView.animate()

@@ -70,6 +70,27 @@
     <dimen name="andes_coachmark_default_radius_overlay">8dp</dimen>
     <dimen name="andes_coachmark_padding_border_overlay">3dp</dimen>
 
+    <!-- Next Button Step-->
     <dimen name="andes_coachmark_next_button_radius_top_bottom">16dp</dimen>
     <dimen name="andes_coachmark_next_button_radius_left_right">16dp</dimen>
+
+    <!--HamburguerView-->
+    <dimen name="andes_coachmark_hamburguer_height">35dp</dimen>
+
+    <!--Dimens-->
+    <dimen name="andes_coachmark_050m">4dp</dimen>
+    <dimen name="andes_coachmark_075m">6dp</dimen>
+    <dimen name="andes_coachmark_2m">16dp</dimen>
+    <dimen name="andes_coachmark_3m">24dp</dimen>
+    <dimen name="andes_coachmark_4m">32dp</dimen>
+    <dimen name="andes_coachmark_5m">40dp</dimen>
+    <dimen name="andes_coachmark_6m">48dp</dimen>
+
+    <!--TextSize-->
+    <dimen name="andes_coachmark_fontsize_xsmall">14sp</dimen>
+    <dimen name="andes_coachmark_fontsize_small">16sp</dimen>
+    <dimen name="andes_coachmark_fontsize_medium">18sp</dimen>
+    <dimen name="andes_coachmark_fontsize_large">20sp</dimen>
+
+
 </resources>

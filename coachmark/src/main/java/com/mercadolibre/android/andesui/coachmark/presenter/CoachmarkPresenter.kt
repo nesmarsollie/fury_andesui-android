@@ -29,7 +29,7 @@ internal class CoachmarkPresenter(private val view: CoachmarkViewInterface) {
             tooltipPosition: WalkthroughMessagePosition
     ) {
 
-        stepReferenced.view.let {
+        stepReferenced.view?.let {
             val isBodyMoreBottom = bodyGlobalRect.bottom < stepReferenceGlobalRect.bottom
             if (isBodyMoreBottom || !it.getLocalVisibleRect(bodyGlobalRect) || bodyGlobalRect.height() < it.height) {
                 resolvePartialOrNotViewedReferenceView(
