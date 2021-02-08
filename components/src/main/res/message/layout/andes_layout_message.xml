@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
+        tools:visibility="visible"
         android:animateLayoutChanges="true">
 
         <TextView
@@ -16,9 +17,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/andes_message_distance_title_body"
+            android:layout_marginStart="@dimen/andes_message_distance_thumbnail_body"
             android:textIsSelectable="true"
             app:layout_constraintEnd_toStartOf="@+id/andes_dismissableleft_guideline"
-            app:layout_constraintStart_toStartOf="@+id/andes_righticon_guideline"
+            app:layout_constraintStart_toStartOf="@+id/andes_message_barrier_vertical"
             app:layout_constraintTop_toTopOf="@+id/andes_top_guideline" />
 
         <TextView
@@ -26,11 +28,24 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textIsSelectable="true"
+            android:layout_marginStart="@dimen/andes_message_distance_thumbnail_body"
             app:layout_constraintBottom_toTopOf="@+id/andes_bottom_guideline"
             app:layout_constraintEnd_toStartOf="@+id/andes_dismissableleft_guideline"
-            app:layout_constraintStart_toStartOf="@+id/andes_righticon_guideline"
+            app:layout_constraintStart_toStartOf="@+id/andes_message_barrier_vertical"
             app:layout_constraintTop_toBottomOf="@+id/andes_title"
             app:layout_constraintVertical_bias="0.0" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/andes_thumbnail"
+            android:layout_width="@dimen/andes_message_thumbnail_diameter"
+            android:layout_height="@dimen/andes_message_thumbnail_diameter"
+            android:maxHeight="@dimen/andes_message_thumbnail_diameter"
+            android:minHeight="@dimen/andes_message_thumbnail_diameter"
+            android:scaleType="fitCenter"
+            android:visibility="gone"
+            tools:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/andes_lefticon_guideline"
+            app:layout_constraintTop_toTopOf="@+id/andes_top_guideline" />
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/andes_icon"
@@ -38,10 +53,10 @@
             android:layout_height="@dimen/andes_message_icon_diameter"
             android:maxHeight="@dimen/andes_message_icon_diameter"
             android:minHeight="@dimen/andes_message_icon_diameter"
-            app:layout_constraintStart_toStartOf="@+id/andes_lefticon_guideline"
-            app:layout_constraintTop_toTopOf="@+id/andes_top_guideline" />
+            app:layout_constraintEnd_toStartOf="@+id/andes_message_barrier_vertical"
+            app:layout_constraintBottom_toBottomOf="@id/andes_message_barrier_bottom"/>
 
-        <com.facebook.drawee.view.SimpleDraweeView
+            <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/andes_dismissable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,6 +71,13 @@
             app:layout_constraintGuide_begin="@dimen/andes_message_guideline_text_start" />
 
         <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/andes_righticon_guideline_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="@dimen/andes_message_righticon_guideline_bottom_margin" />
+
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/andes_dismissableleft_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,6 +90,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="@dimen/andes_message_guideline_icon_start" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/andes_lefticon_guideline_botttom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/andes_message_lefticon_guideline_botttom_margin" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/andes_dismissableright_guideline"
@@ -97,6 +127,20 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_end="@dimen/andes_link_button_message_guideline_padding_bottom" />
 
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/andes_message_barrier_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="andes_thumbnail,andes_lefticon_guideline_botttom" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/andes_message_barrier_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="andes_thumbnail,andes_righticon_guideline_bottom" />
+
         <View
             android:id="@+id/andes_pipe"
             android:layout_width="@dimen/andes_message_pipe_width"
@@ -110,13 +154,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginStart="@dimen/andes_message_distance_thumbnail_body"
             app:andesButtonHierarchy="loud"
             app:andesButtonSize="medium"
             android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/andes_bottom_guideline"
             app:layout_constraintEnd_toStartOf="@+id/andes_dismissableleft_guideline"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/andes_righticon_guideline"
+            app:layout_constraintStart_toStartOf="@+id/andes_message_barrier_vertical"
             app:layout_constraintTop_toBottomOf="@+id/andes_body"
             app:layout_constraintVertical_bias="1.0"
             tools:visibility="visible" />
@@ -127,12 +172,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             app:andesButtonHierarchy="loud"
+            android:layout_marginStart="@dimen/andes_message_distance_thumbnail_body"
             app:andesButtonSize="medium"
             android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/andes_link_action_bottom_guideline"
             app:layout_constraintEnd_toStartOf="@+id/andes_dismissableleft_guideline"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/andes_righticon_guideline"
+            app:layout_constraintStart_toStartOf="@+id/andes_message_barrier_vertical"
             app:layout_constraintTop_toBottomOf="@+id/andes_body"
             app:layout_constraintVertical_bias="1.0"
             tools:visibility="visible" />

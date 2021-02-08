@@ -35,18 +35,7 @@ class AndesDropdownStandalone : ConstraintLayout, AndesListDelegate {
     private val chevronUpIcon: Drawable? = ContextCompat.getDrawable(context, R.drawable.andes_ui_chevron_up_12)
     private val chevronDownIcon: Drawable? = ContextCompat.getDrawable(context, R.drawable.andes_ui_chevron_down_12)
     private val bottomSheetDialog = DropdownBottomSheetDialog(context, R.style.Andes_BottomSheetDialog, this)
-
-    var listItems: MutableList<AndesDropDownItem> = mutableListOf()
-
-    /**
-     * Getter and setter for [label].
-     */
-    var label: String?
-        get() = andesDropdownAttrs.andesDropdownLabel
-        set(value) {
-            andesDropdownAttrs = andesDropdownAttrs.copy(andesDropdownLabel = value)
-            setupLabelComponent(createConfig())
-        }
+    private var listItems: List<AndesDropDownItem> = listOf()
 
     /**
      * Getter and setter for [size].
@@ -84,10 +73,9 @@ class AndesDropdownStandalone : ConstraintLayout, AndesListDelegate {
     constructor(
             context: Context,
             menuType: AndesDropdownMenuType = AndesDropdownMenuType.BOTTOMSHEET,
-            size: AndesDropdownSize,
-            label: String
+            size: AndesDropdownSize
     ) : super(context) {
-        initAttrs(menuType, size, label)
+        initAttrs(menuType, size)
     }
 
     /**
@@ -102,13 +90,12 @@ class AndesDropdownStandalone : ConstraintLayout, AndesListDelegate {
 
     private fun initAttrs(
             menuType: AndesDropdownMenuType,
-            size: AndesDropdownSize,
-            label: String
+            size: AndesDropdownSize
     ) {
         andesDropdownAttrs = AndesDropdownAttrs(
                 andesDropdownMenuType = menuType,
                 andesDropdownSize = size,
-                andesDropdownLabel = label,
+                andesDropdownLabel = null,
                 andesDropdownHelper = null,
                 andesDropdownPlaceHolder = null)
         setupComponents(createConfig())
@@ -140,9 +127,8 @@ class AndesDropdownStandalone : ConstraintLayout, AndesListDelegate {
     /**
      * Set up the text component.
      */
-    private fun setupLabelComponent(config: AndesDropdownConfiguration) {
+    private fun setupLabelComponent() {
         andesDropDownStandaloneContent.typeface = context.getFontOrDefault(R.font.andes_font_regular)
-        andesDropDownStandaloneContent.text = config.label
         andesDropDownStandaloneContent.setTextSize(TypedValue.COMPLEX_UNIT_PX, size.size.titleFontSize(context))
     }
 
@@ -152,7 +138,7 @@ class AndesDropdownStandalone : ConstraintLayout, AndesListDelegate {
      * @param config current AndesListConfiguration
      */
     private fun updateDynamicComponents(config: AndesDropdownConfiguration) {
-        setupLabelComponent(config)
+        setupLabelComponent()
     }
 
     private fun setupBottomSheet() {
@@ -170,6 +156,17 @@ class AndesDropdownStandalone : ConstraintLayout, AndesListDelegate {
             )
         }
 
+    }
+
+    /**
+     * Sets the list of item that the Dropdown will draw
+     */
+    fun setItems(listItems: List<AndesDropDownItem>){
+        this.listItems = listItems
+
+        if (this.listItems.isNotEmpty()){
+            selectItem(0)
+        }
     }
 
     private fun openBottomSheet() {
@@ -196,6 +193,16 @@ class AndesDropdownStandalone : ConstraintLayout, AndesListDelegate {
     }
 
     override fun onItemClick(andesList: AndesList, position: Int) {
+        selectItem(position)
+
+        andesList.refreshListAdapter()
+
+        delegate.onItemSelected(this, position)
+
+        bottomSheetDialog.dismiss()
+    }
+
+    private fun selectItem(position: Int){
         val itemSelected = listItems[position]
 
         listItems.forEach {
@@ -203,10 +210,6 @@ class AndesDropdownStandalone : ConstraintLayout, AndesListDelegate {
         }
 
         andesDropDownStandaloneContent.text = itemSelected.title
-
-        delegate.onItemSelected(this, position)
-
-        bottomSheetDialog.dismiss()
     }
 
     override fun bind(andesList: AndesList, view: View, position: Int): AndesListViewItem {

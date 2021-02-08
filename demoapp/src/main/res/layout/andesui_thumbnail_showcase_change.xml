@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.mercadolibre.android.andesui.thumbnail.AndesThumbnail
-            android:id="@+id/andes_thumbnail"
+            android:id="@+id/andes_thumbnail_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_horizontal_thumbnail"
@@ -56,7 +56,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/andes_thumbnail" />
+            app:layout_constraintTop_toBottomOf="@+id/andes_thumbnail_icon" />
 
         <Spinner
             android:id="@+id/hierarchy_spinner"

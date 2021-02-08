@@ -35,7 +35,8 @@ internal data class AndesMessageConfiguration(
     val linkActionBackgroundColor: BackgroundColorConfig,
     val linkActionTextColor: AndesColor,
     val bodyLinkIsUnderline: Boolean,
-    val bodyLinkTextColor: AndesColor
+    val bodyLinkTextColor: AndesColor,
+    val thumbnail: Drawable?
 )
 
 @Suppress("TooManyFunctions")
@@ -90,7 +91,8 @@ internal object AndesMessageConfigurationFactory {
                 ),
 
                 bodyLinkIsUnderline = resolveBodyLinkIsUnderline(andesMessageHierarchy.hierarchy, andesMessageType.type),
-                bodyLinkTextColor = resolveBodyLinkTextColor(andesMessageHierarchy.hierarchy, andesMessageType.type)
+                bodyLinkTextColor = resolveBodyLinkTextColor(andesMessageHierarchy.hierarchy, andesMessageType.type),
+                thumbnail = thumbnail
             )
         }
     }

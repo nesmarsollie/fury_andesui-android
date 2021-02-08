@@ -72,10 +72,10 @@ class DropdownShowCaseActivity : AppCompatActivity(), AndesDropdownDelegate {
     }
 
     private fun setupDropdownStandaloneShowCase(container: View) {
-
         andesDropdownStandalone = container.andesDropdownStandalone
-        andesDropdownStandalone.listItems.addAll(getFakeList())
-        andesDropdownStandalone.label = andesDropDownLabel
+
+        andesDropdownStandalone.setItems(getFakeList())
+
         andesDropdownStandalone.delegate = this
 
         sizeSpinner = container.findViewById(R.id.andes_dropdown_standalone_show_case_spinner)
@@ -120,7 +120,7 @@ class DropdownShowCaseActivity : AppCompatActivity(), AndesDropdownDelegate {
         andesDropDownForm.placeholder = andesDropDownPlaceHolder
         andesDropDownForm.helper = andesDropDownHelper
 
-        andesDropDownForm.listItems.addAll(getFakeList())
+        andesDropDownForm.setItems(getFakeList())
 
         andesDropDownForm.delegate = this
 
@@ -135,6 +135,7 @@ class DropdownShowCaseActivity : AppCompatActivity(), AndesDropdownDelegate {
         buttonUpdate.setOnClickListener {
             update()
         }
+
     }
 
     private fun clear() {

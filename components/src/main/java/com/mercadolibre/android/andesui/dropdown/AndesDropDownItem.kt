@@ -6,5 +6,4 @@ class AndesDropDownItem {
      var title: String = ""
      var avatar: Drawable? = null
      internal var isSelected: Boolean = false
-
 }

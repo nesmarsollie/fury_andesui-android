@@ -1,3 +1,31 @@
+# v3.7.0
+## 🚀 Feature
+- Added new icons for "To Agree" and "Info" (with outer circle)
+
+## 🛠 Fixes
+- Demoapp dropdown showcase scrollview container added to avoid cutting content
+- Demoapp thumbnail showcase with same resource id as component fixed
+- Dropdown label deleted in standalone type | Author: [@snti](https://github.com/snti)
+
+# v3.6.1
+## 🛠 Fixes
+- Bump fix from version 3.5.1
+
+# v3.6.0
+## 🚀 Feature
+- AndesButton With Drawable support | Authors [a0zamora](https://github.com/a0zamora)
+
+## 🛠 Fixes
+- Datepicker accent color
+
+# v3.5.1
+## 🛠 Fixes
+- AndesMessage contructor overload for java classes compatibility | Authors [eportasML](https://github.com/eportasML)
+
+# v3.5.0
+## 🚀 Feature
+- AndesMessage With Thumbnnail | Authors [a0zamora](https://github.com/a0zamora)
+
 # v3.4.0
 ## 🚀 Features
 - Dropdown | Author: [@snti](https://github.com/snti)
@@ -118,8 +146,8 @@
 
 # v2.8.0
 ## 🚀 Features
-- AndesCard: Hierarchy primary/secondary | Author: [@ArqMobile](https://github.com/mercadolibre/fury_andesui-android)
-- AndesCard: Actions support (link) | Author: [@ArqMobile](https://github.com/mercadolibre/fury_andesui-android)
+- AndesCard: Hierarchy primary/secondary | Author: [@ArqMobile](https://github.com/mercadolibre/fury_andesui-android)
+- AndesCard: Actions support (link) | Author: [@ArqMobile](https://github.com/mercadolibre/fury_andesui-android)
 
 # v2.7.1
 ## 🚀 Features
