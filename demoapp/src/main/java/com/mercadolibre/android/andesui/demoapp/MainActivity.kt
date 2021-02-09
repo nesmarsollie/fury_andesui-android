@@ -64,6 +64,9 @@ class MainActivity : AppCompatActivity() {
         andesui_thumbnail.setOnClickListener {
             startActivity(SafeIntent(this, "meli://andes/thumbnail"))
         }
+        andesui_dropdown.setOnClickListener {
+            startActivity(SafeIntent(this, "meli://andes/dropdown"))
+        }
         andesui_list.setOnClickListener {
             startActivity(SafeIntent(this, "meli://andes/list"))
         }

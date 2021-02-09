@@ -6,7 +6,7 @@ import com.mercadolibre.android.andesui.thumbnail.size.AndesThumbnailSize
 
 /**
  * Defines all size related properties that an [AndesListViewItem] needs to be drawn properly.
- * Those properties change depending on the size of the tag.
+ * Those properties change depending on the size of the list.
  */
 @Suppress("TooManyFunctions")
 internal interface AndesListViewItemSizeInterface {

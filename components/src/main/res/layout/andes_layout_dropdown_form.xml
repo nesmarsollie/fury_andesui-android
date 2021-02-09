@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/andes_dropdown_form_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.mercadolibre.android.andesui.textfield.AndesTextfield
+        android:id="@+id/andes_text_field_dropdown_form"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        app:andesTextfieldLabel="@string/andes_textfield_label_text"
+        app:andesTextfieldPlaceholder="@string/andes_textfield_placeholder_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

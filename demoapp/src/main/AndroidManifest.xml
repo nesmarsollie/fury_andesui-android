@@ -260,6 +260,21 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".feature.DropdownShowCaseActivity"
+            android:parentActivityName=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="andes"
+                    android:path="/dropdown"
+                    android:scheme="meli" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".feature.CarouselShowcaseActivity"
             android:parentActivityName=".MainActivity">
             <intent-filter>

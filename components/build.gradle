@@ -48,8 +48,8 @@ android {
                            'src/main/res/badge', 'src/main/res/snackbar', 'src/main/res/tag', 'src/main/res/checkbox',
                            'src/main/res/radiobutton', 'src/main/res/radiobuttongroup', 'src/main/res/thumbnail',
                            'src/main/res/card', 'src/main/res/progress', 'src/main/res/bottomsheet', 'src/main/res/list',
-                           'src/main/res/bottomsheet', 'src/main/res/carousel',
-                           'src/main/res/datepicker']
+                           'src/main/res/bottomsheet', 'src/main/res/carousel', 'src/main/res/datepicker',
+                           'src/main/res/dropdown']
         }
     }
 }

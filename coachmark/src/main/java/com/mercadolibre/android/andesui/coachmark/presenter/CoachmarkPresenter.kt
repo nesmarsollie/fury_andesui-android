@@ -29,7 +29,7 @@ internal class CoachmarkPresenter(private val view: CoachmarkViewInterface) {
             tooltipPosition: WalkthroughMessagePosition
     ) {
 
-        stepReferenced.view.let {
+        stepReferenced.view?.let {
             val isBodyMoreBottom = bodyGlobalRect.bottom < stepReferenceGlobalRect.bottom
             if (isBodyMoreBottom || !it.getLocalVisibleRect(bodyGlobalRect) || bodyGlobalRect.height() < it.height) {
                 resolvePartialOrNotViewedReferenceView(
@@ -134,10 +134,19 @@ internal class CoachmarkPresenter(private val view: CoachmarkViewInterface) {
     }
 
     fun addRect(stepReferenced: AndesWalkthroughCoachmarkStep) {
-        if (stepReferenced.style == AndesWalkthroughCoachmarkStyle.CIRCLE) {
-            view.addCircleRect(stepReferenced)
-        } else {
-            view.addRoundRect(stepReferenced)
+        when (stepReferenced.style) {
+            AndesWalkthroughCoachmarkStyle.CIRCLE -> {
+                view.addCircleRect(stepReferenced)
+            }
+            AndesWalkthroughCoachmarkStyle.RECTANGLE -> {
+                view.addRoundRect(stepReferenced)
+            }
+            AndesWalkthroughCoachmarkStyle.MENU_ITEM -> {
+                view.addRoundRect(stepReferenced)
+            }
+            else -> {
+                view.addRoundRect(stepReferenced)
+            }
         }
     }
 

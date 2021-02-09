@@ -2,6 +2,7 @@ package com.mercadolibre.android.andesui.coachmark.presenter
 
 import com.mercadolibre.android.andesui.coachmark.model.AndesWalkthroughCoachmarkStep
 
+@SuppressWarnings("TooManyFunctions")
 internal interface CoachmarkViewInterface {
 
     fun cleanCoachmarkOverlayView()

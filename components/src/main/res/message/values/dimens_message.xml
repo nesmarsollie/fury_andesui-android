@@ -8,8 +8,10 @@
     <dimen name="andes_message_dismissable_icon_height">20dp</dimen>
 
     <dimen name="andes_message_icon_diameter">16dp</dimen>
+    <dimen name="andes_message_thumbnail_diameter">48dp</dimen>
 
     <dimen name="andes_message_distance_title_body">8dp</dimen>
+    <dimen name="andes_message_distance_thumbnail_body">16dp</dimen>
     <dimen name="andes_message_guideline_text_start">48dp</dimen>
     <dimen name="andes_message_guideline_text_end">48dp</dimen>
     <dimen name="andes_message_guideline_icon_start">16dp</dimen>
@@ -17,6 +19,8 @@
     <dimen name="andes_message_guideline_padding_top">16dp</dimen>
     <dimen name="andes_message_guideline_padding_bottom">16dp</dimen>
     <dimen name="andes_link_button_message_guideline_padding_bottom">10dp</dimen>
+    <dimen name="andes_message_lefticon_guideline_botttom_margin">32dp</dimen>
+    <dimen name="andes_message_righticon_guideline_bottom_margin">32dp</dimen>
 
     <dimen name="andes_message_pipe_width">4dp</dimen>
 

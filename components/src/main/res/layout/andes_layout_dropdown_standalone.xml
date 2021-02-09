@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/andes_dropdown_container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/text_view_andes_dropdown_trigger_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/andes_gray_800"
+        android:textSize="@dimen/andes_textfield_label_textSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="text" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_view_andes_dropdown_trigger_chevron"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/andes_ui_chevron_down_12"
+        android:layout_marginStart="@dimen/andes_dropdown_chevron_margin_start"
+        android:tint="@color/andes_gray_450"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_andes_dropdown_trigger_content"
+        app:layout_constraintTop_toTopOf="@+id/text_view_andes_dropdown_trigger_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,8 @@
     <string name="loud_small_loading_button">Loading Loud Small Button</string>
     <string name="loud_large_button_programmatic">Loud Large Button Programmatic</string>
     <string name="loud_medium_button_programmatic">Loud Medium Button Programmatic</string>
+    <string name="loud_with_drawable_button_programmatic_left">Loud With Drawable Left</string>
+    <string name="loud_with_drawable_button_programmatic_right">Loud With Drawable Right</string>
     <string name="loud_small_button_programmatic">Loud Small Button Programmatic disabled</string>
     <string name="loud_large_button_disabled">Loud large button disabled</string>
     <string name="loud_large_button_text_updated">This text was updated programmatically</string>
@@ -65,6 +67,9 @@
     <string name="snackbar_description">They communicate quickly and concisely the status of an event. For more complex or extensive communications, consider the use of tooltip or message.</string>
     <string name="checkbox_description">They allow multiple selections from a list of options, unlike radio buttons that only allow you to choose a single option.</string>
     <string name="carousel_description">Groups and allows you to manipulate a horizontal sequence of content.</string>
+    <string name="dropdown_form_description">This trigger is generally applied for form completion, that\'s why his style is aligned to the text field. They are usually used both for simple selections with few options and for more complex and extensive selections and options.</string>
+    <string name="dropdown_standalone_description">They apply anywhere on the interface. By default they show a selected option and do not allow it to be empty. There are 3 sizes.</string>
+
 
     <string name="andesui_demoapp_screen_button">Andes UI: Button</string>
     <string name="andesui_demoapp_screen_bottom_sheet">Andes UI: Bottom Sheet</string>
@@ -74,6 +79,7 @@
     <string name="andesui_demoapp_screen_badge">Andes UI: Badge</string>
     <string name="andesui_demoapp_screen_tag">Andes UI: Tag</string>
     <string name="andesui_demoapp_screen_list">Andes UI: List</string>
+    <string name="andesui_demoapp_screen_dropdown">Andes UI: Dropdown</string>
     <string name="andesui_demoapp_screen_checkbox">Andes UI: Checkbox</string>
     <string name="andesui_demoapp_screen_carousel">Andes UI: Carousel</string>
     <string name="andesui_demoapp_screen_card">Andes UI: Card</string>
@@ -98,6 +104,8 @@
     <string name="andesui_demoapp_label_andes_button_specs">Andes Button Specs 📘</string>
     <string name="andesui_demoapp_label_andes_thumbnail_specs">Andes Thumbnail Specs 📘</string>
     <string name="andesui_demoapp_clear_button">Clear</string>
+    <string name="andesui_demoapp_dropdown_form_title">AndesDropdownForm</string>
+    <string name="andesui_demoapp_dropdown_standalone_title">AndesDropdownStandalone</string>
     <string name="andesui_demoapp_textfield">Andes Textfield</string>
     <string name="andesui_demoapp_textfield_state_text">State:</string>
     <string name="andesui_demoapp_textfield_style_text">Style:</string>
@@ -140,6 +148,10 @@
     <string name="andes_checkbox_align">Align</string>
     <string name="andes_checkbox_text_list_divider">Divider</string>
     <string name="andes_checkbox_text_list_selection">Selection</string>
+
+    <string name="andes_dropdown_title">Titulo</string>
+    <string name="andes_dropdown_place_holder">Place Holder</string>
+    <string name="andes_dropdown_helper">Helper</string>
 
     <string name="andes_card_type">Type</string>
     <string name="andes_card_style">Style</string>
@@ -200,6 +212,8 @@
 
     <string name="andesui_demoapp_list">Andes List</string>
 
+    <string name="andesui_demoapp_dropdown">Andes Dropdown</string>
+
     <string name="andesui_demoapp_thumbnail">Andes Thumbnail</string>
     <string name="andesui_demoapp_thumbnail_state">State</string>
     <string name="andesui_demoapp_thumbnail_description_24">Hierarchy: Quiet, Size: 24, State: Disabled, Type: Icon</string>
@@ -239,6 +253,11 @@
     <string name="andesui_demoapp_datepicker_btn_reset">Reset</string>
 
     <string name="andesui_demoapp_loading_title">Click the button to show the spinner</string>
+
+    <string-array name="thumbnail_spinner">
+        <item>With Thumbnail</item>
+        <item>Without Thumbnail</item>
+    </string-array>
 
     <string-array name="state_spinner">
         <item>Neutral</item>

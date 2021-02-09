@@ -292,7 +292,6 @@ class ListShowcaseActivity : AppCompatActivity(), AndesListDelegate {
 
     override fun bind(andesList: AndesList, view: View, position: Int): AndesListViewItem {
         val row: AndesListViewItem?
-
         val showItemSelected = showItemSelections && itemSelectedPosition == position
 
         if (andesList.type == AndesListType.SIMPLE) {

@@ -190,6 +190,38 @@ class AndesCardTest {
     }
 
     @Test
+    fun `Padding small and BodyPadding none`() {
+        attrs = AndesCardAttrs(
+                View(context),
+                AndesCardType.NONE,
+                AndesCardPadding.SMALL,
+                AndesCardBodyPadding.NONE,
+                AndesCardStyle.OUTLINE,
+                "Title",
+                AndesCardHierarchy.SECONDARY
+        )
+        val config = configFactory.create(context, attrs)
+        assertEquals(config.titlePadding, context.resources.getDimension(R.dimen.andes_card_padding_small).toInt())
+        assertEquals(config.bodyPadding.bodyPadding.bodyPaddingSize(context), context.resources.getDimension(R.dimen.andes_card_padding_none).toInt())
+    }
+
+    @Test
+    fun `Padding and BodyPadding none`() {
+        attrs = AndesCardAttrs(
+                View(context),
+                AndesCardType.NONE,
+                AndesCardPadding.NONE,
+                AndesCardBodyPadding.NONE,
+                AndesCardStyle.OUTLINE,
+                "Title",
+                AndesCardHierarchy.SECONDARY
+        )
+        val config = configFactory.create(context, attrs)
+        assertEquals(config.titlePadding, context.resources.getDimension(R.dimen.andes_card_padding_small).toInt())
+        assertEquals(config.bodyPadding.bodyPadding.bodyPaddingSize(context), context.resources.getDimension(R.dimen.andes_card_padding_none).toInt())
+    }
+
+    @Test
     fun `Body none then body padding small`() {
         val andesCard = AndesCard(context, view, AndesCardType.NONE, AndesCardPadding.NONE, "title", AndesCardStyle.ELEVATED, AndesCardHierarchy.PRIMARY)
         andesCard.bodyPadding = AndesCardBodyPadding.SMALL

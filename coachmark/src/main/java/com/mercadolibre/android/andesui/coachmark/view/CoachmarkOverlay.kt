@@ -41,7 +41,8 @@ internal class CoachmarkOverlay @JvmOverloads constructor(
     }
 
     @Suppress("LongParameterList")
-    fun addRect(x: Int, y: Int, width: Int, height: Int, isCircle: Boolean, radius: Float? = null) {
+    fun addRect(x: Int, y: Int, width: Int, height: Int, isCircle: Boolean, radius: Float? = null,
+                showPadding: Boolean = true) {
 
         this.radius = radius ?: context.resources.getDimension(R.dimen.andes_coachmark_default_radius_overlay)
         this.isCircle = isCircle
@@ -51,12 +52,21 @@ internal class CoachmarkOverlay @JvmOverloads constructor(
         val r = x + width
         val b = y + height
 
-        rectF.add(RectF(
-            (x - padding),
-            (y - padding),
-            (r + padding),
-            (b + padding)
-        ))
+        if (showPadding) {
+            rectF.add(RectF(
+                    (x - padding),
+                    (y - padding),
+                    (r + padding),
+                    (b + padding)
+            ))
+        } else {
+            rectF.add(RectF(
+                    x.toFloat(),
+                    y.toFloat(),
+                    r.toFloat(),
+                    b.toFloat())
+            )
+        }
     }
 
     override fun onDraw(canvas: Canvas) {

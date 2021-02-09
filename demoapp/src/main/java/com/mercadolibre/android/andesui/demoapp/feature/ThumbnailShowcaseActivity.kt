@@ -83,7 +83,7 @@ class ThumbnailShowcaseActivity : AppCompatActivity() {
         val clearButton: AndesButton = container.findViewById(R.id.clear_button)
         val changeButton: AndesButton = container.findViewById(R.id.change_button)
 
-        val andesThumbnail: AndesThumbnail = container.findViewById(R.id.andes_thumbnail)
+        val andesThumbnail: AndesThumbnail = container.findViewById(R.id.andes_thumbnail_icon)
 
         hierarchySpinner.setSelection(DEFAULT_HIERARCHY_OPTION)
         typeSpinner.setSelection(DEFAULT_TYPE_OPTION)

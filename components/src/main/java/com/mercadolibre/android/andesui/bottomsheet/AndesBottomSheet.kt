@@ -163,7 +163,6 @@ class AndesBottomSheet : CoordinatorLayout {
         }
     }
 
-
     private fun resolveDragIndicator() {
         val cornerRadius = context.resources.getDimension(R.dimen.andes_bottom_sheet_drag_indicator_corner_radius)
         val shape = GradientDrawable()

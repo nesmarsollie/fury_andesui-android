@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/andes_dropdown_bottom_sheet_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true">
+
+    <View
+        android:id="@+id/andes_bottom_sheet_drag_indicator"
+        android:layout_width="@dimen/andes_bottom_sheet_drag_indicator_width"
+        android:layout_height="@dimen/andes_bottom_sheet_drag_indicator_height"
+        android:layout_marginTop="@dimen/andes_bottom_sheet_drag_indicator_top_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_goneMarginBottom="@dimen/andes_bottom_sheet_drag_indicator_bottom_margin" />
+
+    <com.mercadolibre.android.andesui.list.AndesList
+        android:id="@+id/andesListDropdown"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:andesListItemSize="medium"
+        app:andesListType="simple"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/andes_bottom_sheet_drag_indicator" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

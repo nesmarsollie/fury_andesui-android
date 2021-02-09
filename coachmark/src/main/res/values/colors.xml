@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="andes_coarchmark_next_button_background">#1Affffff</color>
+    <color name="andes_coachmark_next_button_blue_background">#0092D2</color>
+    <color name="andes_coachmark_configuration_blue_button">#009ee3</color>
+    <color name="andes_coachmark_configuration_gray_button">#33ffffff</color>
+</resources>

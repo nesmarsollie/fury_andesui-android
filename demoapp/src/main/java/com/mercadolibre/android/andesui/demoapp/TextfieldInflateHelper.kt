@@ -1,15 +1,18 @@
 package com.mercadolibre.android.andesui.demoapp
 
 import android.content.Context
-import androidx.core.content.ContextCompat
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.*
-
+import android.widget.ArrayAdapter
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.Toast
+import android.widget.ScrollView
+import androidx.core.content.ContextCompat
 import com.mercadolibre.android.andesui.button.AndesButton
 import com.mercadolibre.android.andesui.textfield.AndesTextarea
 import com.mercadolibre.android.andesui.textfield.AndesTextfield
@@ -25,9 +28,14 @@ import kotlin.collections.ArrayList
 object InflateTextfieldHelper {
 
     fun inflateAndesTextfield(context: Context): View {
+
         val layoutTextfield = LayoutInflater
                 .from(context)
-                .inflate(R.layout.andesui_textfield_showcase_change, null, false)
+                .inflate(R.layout.andesui_textfield_showcase_change,
+                        null,
+                        false
+                )
+
         val textfield = layoutTextfield.findViewById<AndesTextfield>(R.id.andesui_textfield)
         val button = layoutTextfield.findViewById<AndesButton>(R.id.change_button)
         val clearButton = layoutTextfield.findViewById<AndesButton>(R.id.clear_button)
