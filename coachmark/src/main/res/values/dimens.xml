@@ -64,6 +64,7 @@
     <dimen name="andes_coachmark_small_x_new_position_arrow">2.66dp</dimen>
     <dimen name="andes_coachmark_large_y_new_position_arrow">2.23dp</dimen>
     <dimen name="andes_coachmark_small_y_new_position_arrow">1.20dp</dimen>
+    <dimen name="andes_coachmark_arrow_height">54dp</dimen>
 
     <!-- Overlay -->
     <dimen name="andes_coachmark_padding_internal_overlay">12dp</dimen>

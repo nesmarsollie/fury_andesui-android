@@ -11,21 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="24dp" />
+        app:layout_constraintGuide_begin="@dimen/andes_coachmark_3m" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideLineHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="80dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideLineFooter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="@dimen/andes_coachmark_footer_guide_line" />
+        app:layout_constraintGuide_begin="@dimen/andes_coachmark_toolbar_status_bar" />
 
     <View
         android:id="@+id/headerBackground"
@@ -42,10 +35,10 @@
         android:id="@+id/counterText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:textColor="@color/andes_white"
-        android:textSize="14sp"
+        android:textSize="@dimen/andes_coachmark_fontsize_xsmall"
         app:layout_constraintBottom_toTopOf="@id/guideLineHeader"
+        app:layout_constraintEnd_toEndOf="@+id/headerBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideLineStatusBar"
         tools:text="1 de 3" />
@@ -54,48 +47,21 @@
         android:id="@+id/closeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:tint="@color/andes_white"
+        android:layout_marginEnd="@dimen/andes_coachmark_3m"
         app:layout_constraintBottom_toTopOf="@id/guideLineHeader"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideLineStatusBar"
         app:srcCompat="@drawable/andes_ui_close_24"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription"
+        app:tint="@color/andes_white" />
 
     <com.mercadolibre.android.andesui.coachmark.view.CoachmarkOverlay
         android:id="@+id/coachmarkOverlayView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/guideLineFooter"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideLineHeader" />
-
-    <View
-        android:id="@+id/footerBackground"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/andes_gray_800"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideLineFooter"
-        tools:background="#00000000" />
-
-    <com.mercadolibre.android.andesui.button.AndesButton
-        android:id="@+id/nextButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideLineFooter"
-        app:andesButtonSize="large"
-        app:andesButtonHierarchy="loud"
-        tools:andesButtonText="Siguiente" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
