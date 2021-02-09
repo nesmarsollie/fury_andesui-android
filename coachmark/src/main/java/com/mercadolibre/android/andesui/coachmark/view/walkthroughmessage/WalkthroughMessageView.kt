@@ -23,7 +23,7 @@ class WalkthroughMessageView @JvmOverloads constructor(
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
     private var position: WalkthroughMessagePosition = WalkthroughMessagePosition.BELOW
-    private var listener: WalkthroughScrollessMessageView.WalkthroughButtonClicklistener? = null
+    private var walkthroughButtonClicklistener: WalkthroughScrollessMessageView.WalkthroughButtonClicklistener? = null
 
     init {
         inflate(context, R.layout.andes_walkthrough_message, this)
@@ -32,12 +32,12 @@ class WalkthroughMessageView @JvmOverloads constructor(
         walkthroughNextButton.typeface = context.getFontOrDefault(R.font.andes_font_semibold)
     }
 
-    fun setListener(l: WalkthroughScrollessMessageView.WalkthroughButtonClicklistener) {
-        listener = l
+    fun setListener(walkthroughButtonClicklistener: WalkthroughScrollessMessageView.WalkthroughButtonClicklistener) {
+        this.walkthroughButtonClicklistener = walkthroughButtonClicklistener
     }
 
     fun setPosition(position: Int) {
-        walkthroughNextButton.setOnClickListener { listener?.onClickNextButton(position) }
+        walkthroughNextButton.setOnClickListener { walkthroughButtonClicklistener?.onClickNextButton(position) }
     }
 
     fun setData(data: WalkthroughMessageModel, lastPosition: Boolean) {
@@ -47,25 +47,20 @@ class WalkthroughMessageView @JvmOverloads constructor(
             walkthroughNextButton.setBackgroundResource(R.drawable.andes_walkthrough_configuration_button_background)
         }
 
-        if (data.title.isNotEmpty()) {
-            walkthroughTitle.text = data.title
-            walkthroughTitle.visibility = View.VISIBLE
-        } else {
-            walkthroughTitle.visibility = View.GONE
-        }
+        walkthroughTitle.text = data.title
+        walkthroughDescription.text = data.description
+        walkthroughNextButton.text = data.buttonText
 
-        if (data.description.isNotEmpty()) {
-            walkthroughDescription.text = data.title
-            walkthroughDescription.visibility = View.VISIBLE
-        } else {
-            walkthroughDescription.visibility = View.GONE
-        }
+        checkViewVisibility(walkthroughTitle, data.title)
+        checkViewVisibility(walkthroughDescription, data.description)
+        checkViewVisibility(walkthroughNextButton, data.buttonText)
+    }
 
-        if (data.buttonText.isNotEmpty()) {
-            walkthroughNextButton.text = data.buttonText
-            walkthroughNextButton.visibility = View.VISIBLE
+    private fun checkViewVisibility(view: View, content: String) {
+        view.visibility = if (content.isNotBlank()) {
+            View.VISIBLE
         } else {
-            walkthroughNextButton.visibility = View.GONE
+            View.GONE
         }
     }
 
