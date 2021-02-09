@@ -22,6 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:importantForAccessibility="no"
             tools:visibility="visible" />
 
         <TextView
@@ -91,6 +92,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/walkthroughDescription"
+            android:importantForAccessibility="no"
             tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

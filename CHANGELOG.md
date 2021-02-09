@@ -4,7 +4,7 @@
 - Added "Question" and "Mail" icons. | Authors: [@amacagno](https://github.com/amacagno)
 
 ## 🛠 Fixes
-- Demoapp dropdown showcase scrollview container added to avoid cutting content
+- Demoapp Dropdown activity scrollview container added to avoid cutting content
 - Demoapp thumbnail showcase with same resource id as component fixed
 - Dropdown label deleted in standalone type | Author: [@snti](https://github.com/snti)
 

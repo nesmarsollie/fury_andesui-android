@@ -3,6 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -41,6 +43,7 @@
         app:layout_constraintBottom_toTopOf="@id/guideLineHeader"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideLineStatusBar"
+        android:importantForAccessibility="no"
         tools:text="1 de 3" />
 
     <TextView
@@ -64,6 +67,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideLineStatusBar"
         app:srcCompat="@drawable/andes_ui_close_24"
+        android:contentDescription="@android:string/cancel"
         app:tint="@color/andes_white" />
 
     <ImageView
@@ -74,6 +78,7 @@
         app:layout_constraintBottom_toTopOf="@id/guideLineHeader"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideLineStatusBar"
+        android:importantForAccessibility="no"
         app:tint="@color/andes_white" />
 
     <com.mercadolibre.android.andesui.coachmark.view.CoachmarkOverlay

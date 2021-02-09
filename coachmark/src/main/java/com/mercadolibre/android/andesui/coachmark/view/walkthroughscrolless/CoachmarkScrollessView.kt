@@ -15,6 +15,7 @@ import android.view.WindowManager
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
+import androidx.core.view.ViewPropertyAnimatorListener
 import androidx.core.view.ViewPropertyAnimatorListenerAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mercadolibre.android.andesui.coachmark.CoachmarkTracking
@@ -94,6 +95,20 @@ class CoachmarkScrollessView private constructor(builder: Builder) : CoachmarkVi
         ViewCompat.animate(baseContainer)
                 .alpha(1f)
                 .setDuration(ANIMATION_OVERLAY_DURATION)
+                .setListener(object : ViewPropertyAnimatorListener {
+                    override fun onAnimationEnd(view: View?) {
+                        // needed for accessibility
+                        coachmarkContainer.requestFocus()
+                    }
+
+                    override fun onAnimationCancel(view: View?) {
+                        // no-op
+                    }
+
+                    override fun onAnimationStart(view: View?) {
+                        // no-op
+                    }
+                })
                 .start()
     }
 
