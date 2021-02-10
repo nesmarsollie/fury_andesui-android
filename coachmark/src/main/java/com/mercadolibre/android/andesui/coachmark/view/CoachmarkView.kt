@@ -71,7 +71,7 @@ class CoachmarkView private constructor(builder: Builder) : CoachmarkViewInterfa
                 content?.let {
                     baseContainer.layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, decorView.getChildAt(0).height)
                     decorView.addView(baseContainer)
-                    coachmarkOverlayView.setBackgroundColor(ContextCompat.getColor(activity, R.color.andes_gray_800))
+                    coachmarkOverlayView.setBackgroundColor(ContextCompat.getColor(activity, R.color.andes_gray_900))
                     baseContainer.addView(coachmarkContainer)
                     baseContainer.addView(walkthroughMessageView)
                 }
