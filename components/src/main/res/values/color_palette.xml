@@ -73,6 +73,7 @@
     <color name="andes_gray_250">#40000000</color>
     <color name="andes_gray_450">#73000000</color>
     <color name="andes_gray_800">#CC000000</color>
+    <color name="andes_gray_900">#E6000000</color>
     <color name="andes_gray_950">#F2000000</color>
 
     <!--Solid Grays-->
@@ -83,7 +84,6 @@
     <color name="andes_gray_250_solid">#BFBFBF</color>
     <color name="andes_gray_450_solid">#8C8C8C</color>
     <color name="andes_gray_800_solid">#333333</color>
-
 
     <!--Intermediate Layer-->
 
