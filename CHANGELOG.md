@@ -1,3 +1,7 @@
+#3.8.0
+## 🚀 Feature
+- Added keystores inside the demoapp module so each build will use that instead of the particular keystore located in every machine.
+
 # v3.7.0
 ## 🚀 Feature
 - Added new icons for "To Agree" and "Info" (with outer circle)

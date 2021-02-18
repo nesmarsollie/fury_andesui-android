@@ -35,6 +35,21 @@ android {
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
 
+    signingConfigs {
+        debug {
+            keyAlias "ci-key-alias"
+            keyPassword "andesui"
+            storeFile file("key-debug.keystore")
+            storePassword "andesui"
+        }
+        release {
+            keyAlias "ci-key-alias"
+            keyPassword "andesui"
+            storeFile file("key-release.keystore")
+            storePassword "andesui"
+        }
+    }
+
     buildTypes {
         debug {
             applicationIdSuffix '.debug'
@@ -44,6 +59,8 @@ android {
             }
 
             resValue("string", "andesui_demoapp_app_name", "Andes DEBUG v${libraryVersion}")
+            signingConfig signingConfigs.debug
+
         }
         release {
             initWith(buildTypes.debug)
@@ -54,6 +71,7 @@ android {
 
             applicationIdSuffix ''
             resValue("string", "andesui_demoapp_app_name", "Andes v${libraryVersion}")
+            signingConfig signingConfigs.release
         }
         mds {
             initWith(buildTypes.debug)
