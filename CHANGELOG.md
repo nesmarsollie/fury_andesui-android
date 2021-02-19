@@ -2,6 +2,9 @@
 ## 🚀 Feature
 - Added keystores inside the demoapp module so each build will use that instead of the particular keystore located in every machine.
 
+### ⚙️ Other
+- Improve pull request template | Authors [joalonspint](https://github.com/joalonsopint)
+
 # v3.7.0
 ## 🚀 Feature
 - Added new icons for "To Agree" and "Info" (with outer circle)
